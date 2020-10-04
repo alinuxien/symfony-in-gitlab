@@ -14,4 +14,6 @@ apt-get install -y php php-bcmath php-cli php-curl php-zip php-sqlite3 php-mysql
 wget https://getcomposer.org/composer.phar
 mv composer.phar /usr/bin/composer
 chmod +x /usr/bin/composer
+wget https://get.symfony.com/cli/installer -O - | bash
+mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 
