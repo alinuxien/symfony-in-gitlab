@@ -36,6 +36,7 @@ Vagrant.configure("2") do |config|
       v.customize [ "guestproperty", "set", :id, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold", 10000 ]
     end
     recette.vm.provision :shell, path: "bootstrap_vieillot.sh"
+    recette.vm.provision :shell, path: "auto_cd_recette.sh"
   end
 
   config.vm.define "production-vieillot" do |production|
@@ -55,6 +56,7 @@ Vagrant.configure("2") do |config|
       v.customize [ "guestproperty", "set", :id, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold", 10000 ]
     end
     production.vm.provision :shell, path: "bootstrap_vieillot.sh"
+    production.vm.provision :shell, path: "auto_cd_production.sh"
   end
 end
 
