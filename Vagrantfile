@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
     recette.vm.box_check_update = false
     recette.vm.hostname = "recette"
     recette.vm.network "forwarded_port", guest: 8000, host: 8010
-    recette.vm.network "private_network", ip: "192.168.34.10"
+#    recette.vm.network "private_network", ip: "192.168.34.10"
     recette.vm.synced_folder ".", "/vagrant", type: "virtualbox" 
     recette.vm.provider "virtualbox" do |v|
       v.name = "recette-vieillot"
@@ -44,7 +44,7 @@ Vagrant.configure("2") do |config|
     production.vm.box_check_update = false
     production.vm.hostname = "production"
     production.vm.network "forwarded_port", guest: 8000, host: 8081
-    production.vm.network "private_network", ip: "192.168.34.20"
+#    production.vm.network "private_network", ip: "192.168.34.20"
     production.vm.synced_folder ".", "/vagrant", type: "virtualbox" 
     production.vm.provider "virtualbox" do |v|
       v.name = "production-vieillot"
