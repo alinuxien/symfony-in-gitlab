@@ -1,0 +1,6 @@
+---
+- name: "Configuration de la Registry GitLab"
+  hosts: localhost 
+  roles: 
+    - gitlab-registry
+

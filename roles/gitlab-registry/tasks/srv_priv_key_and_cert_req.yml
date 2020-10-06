@@ -1,0 +1,5 @@
+---
+- name: Generation d'une clé privée et d'une demande de certificat pour le serveur de la Registry
+  shell:
+          openssl req -new -sha256 -nodes -out /etc/gitlab/ssl/registry.example.com.csr -newkey rsa:2048 -keyout /etc/gitlab/ssl/registry.example.com.key -subj "/O=Alinuxien/CN=registry.example.com"
+
