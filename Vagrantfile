@@ -8,6 +8,7 @@ Vagrant.configure("2") do |config|
     gitlab.vm.hostname = "gitlab.example.com"
     gitlab.vm.network "forwarded_port", guest: 80, host: 8080
     gitlab.vm.network "forwarded_port", guest: 4443, host: 4443
+    gitlab.vm.network "private_network", ip: "192.168.34.30"
     gitlab.vm.synced_folder "/srv/gitlab/data", "/var/opt/gitlab", type: "nfs", nfs_version: 4, nfs_udp: false 
     gitlab.vm.synced_folder "/srv/gitlab/logs", "/var/log/gitlab", type: "nfs", nfs_version: 4, nfs_udp: false 
     gitlab.vm.synced_folder "/srv/gitlab/config", "/etc/gitlab", type: "nfs", nfs_version: 4, nfs_udp: false 
@@ -20,6 +21,7 @@ Vagrant.configure("2") do |config|
       v.customize [ "guestproperty", "set", :id, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold", 10000 ]
     end
     gitlab.vm.provision :shell, path: "bootstrap.sh"
+    gitlab.vm.provision :shell, path: "auto_cd_gitlab.sh"
   end
 
   config.vm.define "recette-vieillot" do |recette|
