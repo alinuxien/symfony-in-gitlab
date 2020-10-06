@@ -9,9 +9,9 @@ Vagrant.configure("2") do |config|
     gitlab.vm.network "forwarded_port", guest: 80, host: 8080
     gitlab.vm.network "forwarded_port", guest: 4443, host: 4443
     gitlab.vm.network "private_network", ip: "192.168.34.30"
-    gitlab.vm.synced_folder "/srv/gitlab/data", "/var/opt/gitlab", type: "nfs", nfs_version: 4, nfs_udp: false 
-    gitlab.vm.synced_folder "/srv/gitlab/logs", "/var/log/gitlab", type: "nfs", nfs_version: 4, nfs_udp: false 
-    gitlab.vm.synced_folder "/srv/gitlab/config", "/etc/gitlab", type: "nfs", nfs_version: 4, nfs_udp: false 
+    gitlab.vm.synced_folder "/srv/gitlab/data", "/var/opt/gitlab", type: "virtualbox" 
+    gitlab.vm.synced_folder "/srv/gitlab/logs", "/var/log/gitlab", type: "virtualbox" 
+    gitlab.vm.synced_folder "/srv/gitlab/config", "/etc/gitlab", type: "virtualbox" 
     gitlab.vm.provider "virtualbox" do |v|
       v.name = "gitlab-vieillot"
       v.memory = 8192
