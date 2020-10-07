@@ -1,0 +1,7 @@
+---
+- name: "Ajout permission accès à Docker pour les Runners"
+  user:
+      name: gitlab-runner
+      append: yes
+      groups: docker
+

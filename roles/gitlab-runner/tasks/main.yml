@@ -10,4 +10,6 @@
           - cert_copy.yml
           - ca_cert_copy.yml
           - ca_cert_copy_global.yml
+          - add_docker_group.yml
+          - docker_service_restart.yml
 
