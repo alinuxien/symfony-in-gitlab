@@ -20,6 +20,7 @@ Vagrant.configure("2") do |config|
     end
     gitlab.vm.provision :shell, path: "bootstrap.sh"
     gitlab.vm.provision :shell, path: "auto_cd_gitlab.sh"
+    gitlab.vm.provision :shell, path: "nameresolv.sh"
   end
 
   config.vm.define "recette-vieillot" do |recette|
@@ -41,6 +42,7 @@ Vagrant.configure("2") do |config|
     end
     recette.vm.provision :shell, path: "bootstrap_vieillot.sh"
     recette.vm.provision :shell, path: "auto_cd_recette.sh"
+    recette.vm.provision :shell, path: "nameresolv.sh"
   end
 
   config.vm.define "production-vieillot" do |production|
@@ -62,6 +64,7 @@ Vagrant.configure("2") do |config|
     end
     production.vm.provision :shell, path: "bootstrap_vieillot.sh"
     production.vm.provision :shell, path: "auto_cd_production.sh"
+    production.vm.provision :shell, path: "nameresolv.sh"
   end
 end
 
