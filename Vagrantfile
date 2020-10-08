@@ -8,7 +8,8 @@ Vagrant.configure("2") do |config|
     gitlab.vm.hostname = "gitlab.example.com"
     gitlab.vm.network "forwarded_port", guest: 80, host: 8080
     gitlab.vm.network "forwarded_port", guest: 4443, host: 4443
-    gitlab.vm.network "private_network", ip: "192.168.34.30"
+    gitlab.vm.network "forwarded_port", guest: 22, host: 2222, id: 'ssh'
+    gitlab.vm.network "private_network", ip: "192.168.34.30", hostname: true
     gitlab.vm.provider "virtualbox" do |v|
       v.name = "gitlab-vieillot"
       v.memory = 8192
@@ -27,7 +28,8 @@ Vagrant.configure("2") do |config|
     recette.vm.box_check_update = false
     recette.vm.hostname = "recette"
     recette.vm.network "forwarded_port", guest: 8000, host: 8010
-    recette.vm.network "private_network", ip: "192.168.34.10"
+    recette.vm.network "forwarded_port", guest: 22, host: 2200, id: 'ssh'
+    recette.vm.network "private_network", ip: "192.168.34.10", hostname: true
     recette.vm.synced_folder "./recette", "/home/vagrant/recette", type: "nfs", nfs_version: 4, nfs_udp: false 
     recette.vm.provider "virtualbox" do |v|
       v.name = "recette-vieillot"
@@ -47,7 +49,8 @@ Vagrant.configure("2") do |config|
     production.vm.box_check_update = false
     production.vm.hostname = "production"
     production.vm.network "forwarded_port", guest: 8000, host: 8081
-    production.vm.network "private_network", ip: "192.168.34.20"
+    production.vm.network "forwarded_port", guest: 22, host: 2201, id: 'ssh'
+    production.vm.network "private_network", ip: "192.168.34.20", hostname: true
     production.vm.synced_folder "./production", "/home/vagrant/production", type: "nfs", nfs_version: 4, nfs_udp: false
     production.vm.provider "virtualbox" do |v|
       v.name = "production-vieillot"
