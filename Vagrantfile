@@ -12,8 +12,8 @@ Vagrant.configure("2") do |config|
     gitlab.vm.network "private_network", ip: "192.168.34.30", hostname: true
     gitlab.vm.provider "virtualbox" do |v|
       v.name = "gitlab-vieillot"
-      v.memory = 8192
-      v.cpus = 8
+      v.memory = 16384
+      v.cpus = 12
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
       v.customize [ "guestproperty", "set", :id, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold", 10000 ]
